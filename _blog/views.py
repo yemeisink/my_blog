@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.forms import UserCreationForm
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, UserRegistrationForm
 
 from datetime import datetime
 
@@ -47,3 +48,16 @@ def posts_by_date(request):
         posts = []  # Handling of date formatting errors
 
     return render(request, 'posts_by_date.html', {'posts': posts, 'selected_date': selected_date})
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'register.html', {'form': form})
+
+def login_view(request):
+    return render(request, 'login.html')

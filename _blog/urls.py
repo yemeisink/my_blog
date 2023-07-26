@@ -11,4 +11,6 @@ urlpatterns = [
     path('authors/', all_authors, name='all_authors'),
     path('posts_by_author/<str:author_name>/', posts_by_author, name='posts_by_author'),
     path('posts_by_date/', views.posts_by_date, name='posts_by_date'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login_view, name='login'),
 ]
