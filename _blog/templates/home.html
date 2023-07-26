@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1> Post</h1>
+
+    <!-- Add a button to sort posts by date -->
+    <form action="{% url 'all_posts_sorted_by_date' %}" method="get">
+        <button type="submit">Sort by Date</button>
+    </form>
+
+    <form action="{% url 'posts_by_date' %}" method="get">
+        <label for="selected_date">Select a date:</label>
+        <input type="date" id="selected_date" name="selected_date">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+    {% for post in object_list %}
+        <li>
+            <a href={% url 'article-detail' post.pk %}>
+                {{ post.title }}
+            </a>
+            - {{ post.author.first_name }}
+            <br />
+        {{ post.body }} ''date:
+        {{ post.pub_date }}''</li>
+        <br />
+        <br />
+        <br />
+        <br />
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'all_authors' %}">View All Authors</a>
+
+{% endblock %}

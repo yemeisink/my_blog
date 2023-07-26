@@ -1,0 +1,14 @@
+<!-- all_authors.html -->
+{% extends 'base.html' %}
+{% block title %} All Authors {% endblock title %}
+{% block content %}
+
+    <h1>All Authors</h1>
+
+    <ul>
+        <li><a href="{% url 'posts_by_author' 'admin' %}">admin</a></li>
+        <li><a href="{% url 'posts_by_author' 'salar'%}">salar</a></li>
+    </ul>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+{% endblock %}

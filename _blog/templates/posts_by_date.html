@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Posts by Date {% endblock title %}
+{% block content %}
+
+    <h1>Posts on {{ selected_date }}</h1>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'article-detail' post.pk %}">
+                    {{ post.title }}
+                </a>
+                - {{ post.author }}
+                <br />
+                {{ post.body }}
+                {{ post.pub_date }}</li>
+            <br />
+            <br />
+            <br />
+            <br />
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to home</a>
+
+{% endblock %}
